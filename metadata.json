@@ -1,0 +1,6 @@
+{
+  "name": "派对AI狂欢盒 (PartyHub AI)",
+  "description": "专为线上开黑与线下大屏聚会打造的超高互动游戏盒，支持一键链接直连与手机扫码加入，内置毒舌搞笑AI机器人裁判主持，包含谁是卧底、灵魂画手、手速抢答与AI海龟汤四大深度对抗玩法，附带全屏投掷物、嘴炮台与派对终局AI颁奖典礼。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
