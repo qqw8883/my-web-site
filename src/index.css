@@ -106,3 +106,23 @@ button, input, select, textarea {
   animation: pdd-shine 2s infinite ease-in-out;
 }
 
+@keyframes strobe-sweep {
+  0% { transform: translateX(-100%); opacity: 0.1; }
+  50% { opacity: 0.8; }
+  100% { transform: translateX(200%); opacity: 0.1; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-strobe {
+  animation: strobe-sweep 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+

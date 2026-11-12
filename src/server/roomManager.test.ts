@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { RoomManager } from './roomManager.js';
+import { RoomManager, UNDERCOVER_PAIRS } from './roomManager.js';
 
 test('RoomManager creates room with host as active player and 4-letter code', () => {
   const rm = new RoomManager();
@@ -250,3 +250,17 @@ test('RoomManager handles disconnect and seamless reconnect without losing score
   assert.equal(room.players['p1'].online, true);
   assert.equal(room.players['p1'].score, 150);
 });
+
+test('UNDERCOVER_PAIRS library contains at least 200 rich distinct pairs', () => {
+  assert.ok(UNDERCOVER_PAIRS.length >= 200, `Expected >= 200 pairs, found ${UNDERCOVER_PAIRS.length}`);
+  const keys = new Set();
+  for (const pair of UNDERCOVER_PAIRS) {
+    assert.ok(pair.civilian && pair.civilian.trim().length > 0);
+    assert.ok(pair.undercover && pair.undercover.trim().length > 0);
+    assert.ok(Array.isArray(pair.botHints) && pair.botHints.length >= 2);
+    const key = `${pair.civilian}_${pair.undercover}`;
+    assert.ok(!keys.has(key), `Duplicate pair found: ${key}`);
+    keys.add(key);
+  }
+});
+

@@ -13,6 +13,7 @@ import { TurtleSoupHost } from './components/games/TurtleSoupHost';
 import { FloatingReactions } from './components/FloatingReactions';
 import { QuickVoiceBar } from './components/QuickVoiceBar';
 import { AwardCeremonyModal } from './components/AwardCeremonyModal';
+import { GameStageRouter } from './components/GameStageThemes';
 import { RoomState, GameType, ItemCardType } from './types/game';
 import { sound } from './utils/sound';
 
@@ -386,7 +387,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[#070a13] text-slate-100 flex flex-col justify-between p-3 sm:p-6 md:p-8 select-none relative overflow-x-hidden">
+    <GameStageRouter gameType={room.gameType}>
       {/* Network reconnecting banner */}
       {!isConnected && (
         <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 bg-rose-600/90 backdrop-blur text-white text-xs px-3.5 py-1 rounded-full shadow-lg border border-rose-300/40 flex items-center gap-2 animate-pulse pointer-events-none">
@@ -474,6 +475,6 @@ export default function App() {
       <div className="w-full text-center text-xs text-slate-500 font-mono py-2">
         PartyHub AI · 房间号: {room.id} · 线上连麦开黑 & 线下大屏聚会双模 · 毒舌AI裁判 Bot-888 在线
       </div>
-    </div>
+    </GameStageRouter>
   );
 }
