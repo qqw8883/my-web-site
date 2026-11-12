@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #070a13;
+  color: #f1f5f9;
+  margin: 0;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Touch controls for mobile party controller */
+button, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Domain-specific game atmospheres */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes laser-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.98); }
+  50% { opacity: 0.9; transform: scale(1.02); }
+}
+
+@keyframes stamp-slam {
+  0% { transform: scale(2.8) rotate(-15deg); opacity: 0; }
+  60% { transform: scale(0.92) rotate(-8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 7px #ec4899, 0 0 18px #ec4899, 0 0 35px #ec4899;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+}
+
+.animate-laser {
+  animation: laser-pulse 2s ease-in-out infinite;
+}
+
+.animate-stamp {
+  animation: stamp-slam 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+.neon-text-pink {
+  animation: neon-flicker 3s infinite;
+}
+
+/* PDD Chop Slash Card Shake & Burst Effect */
+@keyframes pdd-slash {
+  0% { transform: scale(0.3) rotate(-25deg); opacity: 0; filter: drop-shadow(0 0 0 rgba(239,68,68,0)); }
+  40% { transform: scale(1.15) rotate(6deg); opacity: 1; filter: drop-shadow(0 0 35px rgba(239,68,68,0.8)); }
+  60% { transform: scale(0.95) rotate(-3deg); }
+  80% { transform: scale(1.04) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes pdd-shine {
+  0% { transform: translateX(-150%) skewX(-25deg); }
+  100% { transform: translateX(250%) skewX(-25deg); }
+}
+
+.animate-pdd-slash {
+  animation: pdd-slash 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-pdd-shine {
+  animation: pdd-shine 2s infinite ease-in-out;
+}
+
